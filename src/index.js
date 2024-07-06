@@ -2,8 +2,15 @@ const express = require("express");
 const { PORT } = require("./config/serverConfig");
 const urlRouter = require("./routes/urlRoutes");
 const dbConnect = require("./config/dbConfig");
+const cors = require("cors");
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 app.use(express.json());
 app.use(express.text());
