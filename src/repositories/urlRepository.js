@@ -13,7 +13,7 @@ async function createUrl(url, shortId) {
   }
 }
 
-async function getUrl(shortId) {
+async function getUrlById(shortId) {
   try {
     const ans = await Url.findOne({ shortId });
     return { success: true, url: ans };
@@ -23,7 +23,18 @@ async function getUrl(shortId) {
   }
 }
 
+async function getUrlByUrl(url) {
+  try {
+    const ans = await Url.findOne({ url });
+    return { success: true, url: ans };
+  } catch (err) {
+    console.log(err);
+    return { success: false };
+  }
+}
+
 module.exports = {
   createUrl,
-  getUrl,
+  getUrlById,
+  getUrlByUrl,
 };
